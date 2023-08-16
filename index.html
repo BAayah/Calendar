@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="EI=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Calendar</title>
+</head>
+<body>
+    <div class="hero">
+      
+        <div class="calendar">
+            <div class="clock">
+                <p id="t"></p>
+                <!-- <p id="minutes"></p>:
+                <p id="seconds"></p> -->
+            </div>
+            <div class="left">
+              <p id="date">01</p>
+              <p id="day">Monday</p>
+            </div>
+            <div class="right">
+                <p id="month">January</p>
+                <p id="year">2023</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const clock = ()=> {
+            const date = document.getElementById('date');
+        const day = document.getElementById('day');
+        const month = document.getElementById('month');
+        const year = document.getElementById('year');
+        const t = document.getElementById('t');
+
+        // const hours = document.getElementById('hours');
+        // const minutes = document.getElementById('minutes');
+        // const seconds = document.getElementById('seconds');
+
+        const today = new Date()
+        
+        const weekDays = ["Monday-Pazartesi","Tuesday-Sali","Wednesday-Carsamba","Thursday-Persembe","Friday-Cuma","Saturday-Cumartesi","Sunday-Pazar",]
+        const allMonth = ['January/<p id="TM">Ocak</p>','February/Subat','March/Mart','April/Nisan','May/Mayis','June/Haziran','July/Temmuz','August<p class="TM two">Agustos</p>','September/Eylul','October/Ekim','November/Kasim','December/Aralik',]
+        date.innerHTML=today.getDate()
+        day.innerHTML=weekDays[today.getDay()-1]
+        month.innerHTML=allMonth[today.getMonth()]
+        year.innerHTML=today.getFullYear()
+        // hours.innerHTML=today.getHours()
+        // minutes.innerHTML=today.getMinutes()
+        // seconds.innerHTML=today.getSeconds()
+
+        let hours = today.getHours()
+        let seconds = today.getSeconds()
+        let minutes = today.getMinutes()
+
+        if (hours < 9) hours = "0" + hours;
+        if (minutes <10) minutes = "0" + minutes;
+        if (seconds < 10) seconds = "0" +seconds;
+
+        let time = hours+":"+minutes+":"+seconds
+        t.innerHTML=time
+        
+      setTimeout(() => {
+        clock();
+      }, 1000);
+
+    }        
+        
+      clock();
+    // console.log(today.getDate)
+    </script>
+</body>
+</html>
